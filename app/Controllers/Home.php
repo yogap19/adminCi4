@@ -16,6 +16,14 @@ class Home extends BaseController
         $data = [
             'title' => 'Admin Stock',
         ];
+        if (session('username')) {
+            session('role_id') == 1 ?
+			header('Location: ' . base_url('Admin/dashboard')) :
+			header('Location: ' . base_url('User/pemasukan')) 
+            ;
+			exit();
+		}
+
         return view('Auth/login', $data);
     }
 
